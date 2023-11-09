@@ -1,30 +1,12 @@
-'use strict';
+const express = require('express')
 
-const Hapi = require('@hapi/hapi');
+const app = express()
+const port = 3000
 
-const init = async () => {
+app.get('/', (req, res) => {
+  res.send('Hello Worlds!')
+})
 
-    const server = Hapi.server({
-        port: 3000,
-        host: 'localhost'
-    });
-
-    server.route({
-        method: 'GET',
-        path: "/",
-        handler: (request, h) => {
-            return "WFA";
-        }
-    })
-
-    await server.start();
-    console.log('Server running on %s', server.info.uri);
-};
-
-process.on('unhandledRejection', (err) => {
-
-    console.log(err);
-    process.exit(1);
-});
-
-init();
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
