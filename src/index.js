@@ -1,5 +1,7 @@
 const express = require('express')
 
+console.log(process.env);
+
 const app = express()
 const port = 3000
 
